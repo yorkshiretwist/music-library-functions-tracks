@@ -1,0 +1,15 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'Pay-As-You-Go(30afd6eb-b632-46d7-b3cc-d59671fcc51a)'
+    appType: 'functionAppLinux'
+    appName: 'yorkshiretwist-music-library'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    runtimeStack: 'DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0'
