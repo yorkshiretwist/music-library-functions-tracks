@@ -19,10 +19,17 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)'
+    Contents: '**'
+    TargetFolder: '$(System.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'Pay-As-You-Go(30afd6eb-b632-46d7-b3cc-d59671fcc51a)'
     appType: 'functionAppLinux'
     appName: 'yorkshiretwist-music-library-api'
-    package: '$(Build.ArtifactsDirectory)/**/*.zip'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
     runtimeStack: 'DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0'
