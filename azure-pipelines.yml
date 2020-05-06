@@ -13,8 +13,8 @@ steps:
 
 - task: AzureFunctionApp@1
   inputs:
-    azureSubscription: 'Pay-As-You-Go(30afd6eb-b632-46d7-b3cc-d59671fcc51a)'
+    azureSubscription: 'Visual Studio Ultimate with MSDN (6b8a37f6-e0c1-4cb4-ba87-5013b019d142)'
     appType: 'functionAppLinux'
-    appName: 'yorkshiretwist-music-library'
+    appName: 'yorkshiretwist-music-library-api'
     package: '$(System.ArtifactsDirectory)/**/*.zip'
     runtimeStack: 'DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0'
