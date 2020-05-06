@@ -16,7 +16,7 @@ steps:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(System.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
 - task: AzureFunctionApp@1
@@ -24,5 +24,5 @@ steps:
     azureSubscription: 'Pay-As-You-Go(30afd6eb-b632-46d7-b3cc-d59671fcc51a)'
     appType: 'functionAppLinux'
     appName: 'yorkshiretwist-music-library-api'
-    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    package: '$(Build.ArtifactsDirectory)/**/*.zip'
     runtimeStack: 'DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0'
