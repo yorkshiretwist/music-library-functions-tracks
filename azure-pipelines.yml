@@ -25,11 +25,10 @@ steps:
     Contents: '**'
     TargetFolder: '$(System.ArtifactStagingDirectory)'
     CleanTargetFolder: true
-
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'Visual Studio Ultimate with MSDN(6b8a37f6-e0c1-4cb4-ba87-5013b019d142)'
-    appType: 'functionAppLinux'
-    appName: 'yorkshiretwist-music-library-funcs'
+    appType: 'functionApp'
+    appName: 'yorkshiretwist-music-library'
     package: '$(System.ArtifactsDirectory)/**/*.zip'
-    runtimeStack: 'DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0'
+    deploymentMethod: 'auto'
